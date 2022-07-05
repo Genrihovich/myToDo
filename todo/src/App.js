@@ -43,14 +43,14 @@ function App() {
   return (
     <div className="App">
       <label>
-        <input value={text} onChange={(e) => setText(e.target.value)}></input>
-        <button onClick={addTodo}>Add</button>
+        <input placeholder="Ввод TODO" value={text} onChange={(e) => setText(e.target.value)}></input>
+        <button class="btn btn-outline-success" onClick={addTodo}>Add</button>
       </label>
 
       <ul>
         {
           todos.map(todo => <li key={todo.id}>
-            <input type="checkbox" checked={todo.complited} onChange={() => { toggleTodoComplete(todo.id) }} />
+            <input class="form-check-input" type="checkbox" checked={todo.complited} onChange={() => { toggleTodoComplete(todo.id) }} />
             <span>{todo.text}</span>
             <span className='delete' onClick={() => removeTodo(todo.id)}>&times;</span> {/* спец символ */}
           </li>)
