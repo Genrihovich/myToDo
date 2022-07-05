@@ -59,6 +59,10 @@ function App() {
 
   return (
     <div className="App">
+      <div >
+        <button className="btnUser btn btn-outline-success">Вход</button>
+        <input className='user' placeholder='Ввод пользователя'></input>
+      </div>
       <div className="container">
         <label>
           <input placeholder="Ввод TODO" value={text} onChange={(e) => setText(e.target.value)}></input>
@@ -70,7 +74,9 @@ function App() {
             todos.map(todo => <li key={todo.id}>
               <input className="form-check-input" type="checkbox" checked={todo.complited} onChange={() => { toggleTodoComplete(todo.id) }} />
               <span>{todo.text}</span>
+              {/*  <span style={{ textDecoration: todo.complited ? "line-through" : "" }}>{todo.text}</span> */}
               <span className='delete' onClick={() => removeTodo(todo.id)}>&times;</span> {/* спец символ */}
+
             </li>)
           }
         </ul>
