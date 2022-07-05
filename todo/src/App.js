@@ -1,9 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [todos, setTodos] = useState([]); //список тасков
+  const [todos, setTodos] =
+    useState(JSON.parse(localStorage.getItem('MY_STATE_TODO')) || []); //список тасков
   const [text, setText] = useState('');   // таск
+
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('MY_STATE_TODO');
+    if (data !== null) setTodos(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem('MY_STATE_TODO', JSON.stringify(todos));
+  }, [todos]);
+
+
+
+
+
 
   //------------------------------- добавление todo -----------------------------
   const addTodo = () => {
@@ -17,6 +33,7 @@ function App() {
         }
       ])
       setText('') // сбрасываем на пустой после добавления
+      // console.log(saveTodo);
     }
   }//============================================================================
 
@@ -42,22 +59,23 @@ function App() {
 
   return (
     <div className="App">
-      <label>
-        <input placeholder="Ввод TODO" value={text} onChange={(e) => setText(e.target.value)}></input>
-        <button class="btn btn-outline-success" onClick={addTodo}>Add</button>
-      </label>
+      <div className="container">
+        <label>
+          <input placeholder="Ввод TODO" value={text} onChange={(e) => setText(e.target.value)}></input>
+          <button className="btn btn-outline-success" onClick={addTodo}>Add</button>
+        </label>
 
-      <ul>
-        {
-          todos.map(todo => <li key={todo.id}>
-            <input class="form-check-input" type="checkbox" checked={todo.complited} onChange={() => { toggleTodoComplete(todo.id) }} />
-            <span>{todo.text}</span>
-            <span className='delete' onClick={() => removeTodo(todo.id)}>&times;</span> {/* спец символ */}
-          </li>)
-        }
-      </ul>
-
-    </div>
+        <ul>
+          {
+            todos.map(todo => <li key={todo.id}>
+              <input className="form-check-input" type="checkbox" checked={todo.complited} onChange={() => { toggleTodoComplete(todo.id) }} />
+              <span>{todo.text}</span>
+              <span className='delete' onClick={() => removeTodo(todo.id)}>&times;</span> {/* спец символ */}
+            </li>)
+          }
+        </ul>
+      </div>
+    </div >
   );
 }
 
