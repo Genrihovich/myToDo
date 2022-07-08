@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import TodoList from './components/TodoList';
+import ImputField from './components/ImputField';
+
 import './App.css';
 
 function App() {
@@ -29,7 +32,7 @@ function App() {
         {
           id: new Date().toISOString(), // идентификатор
           text,                         // сам текст
-          complited: false, // статус завершенности (вначале дело еще не завершено)
+          completed: false, // статус завершенности (вначале дело еще не завершено)
         }
       ])
       setText('') // сбрасываем на пустой после добавления
@@ -50,7 +53,7 @@ function App() {
           if (todo.id !== todoId) return todo;
           return {
             ...todo,
-            complited: !todo.complited,
+            completed: !todo.completed,
           }
         }
       )
@@ -64,22 +67,21 @@ function App() {
         <input className='user' placeholder='Ввод пользователя'></input>
       </div>
       <div className="container">
-        <label>
+        {/* <label>
           <input placeholder="Ввод TODO" value={text} onChange={(e) => setText(e.target.value)}></input>
           <button className="btn btn-outline-success" onClick={addTodo}>Add</button>
-        </label>
+        </label> */}
+        <ImputField
+          text={text}
+          setText={setText}
+          addTodo={addTodo}
+        />
 
-        <ul>
-          {
-            todos.map(todo => <li key={todo.id}>
-              <input className="form-check-input" type="checkbox" checked={todo.complited} onChange={() => { toggleTodoComplete(todo.id) }} />
-              <span>{todo.text}</span>
-              {/*  <span style={{ textDecoration: todo.complited ? "line-through" : "" }}>{todo.text}</span> */}
-              <span className='delete' onClick={() => removeTodo(todo.id)}>&times;</span> {/* спец символ */}
-
-            </li>)
-          }
-        </ul>
+        <TodoList
+          todos={todos}
+          toggleTodoComplete={toggleTodoComplete}
+          removeTodo={removeTodo}
+        />
       </div>
     </div >
   );
