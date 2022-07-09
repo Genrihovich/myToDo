@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import TodoList from './components/TodoList';
 import ImputField from './components/ImputField';
+import Users from './components/Users';
 
 import './App.css';
 
@@ -63,14 +64,9 @@ function App() {
   return (
     <div className="App">
       <div >
-        <button className="btnUser btn btn-outline-success">Вход</button>
-        <input className='user' placeholder='Ввод пользователя'></input>
+        < Users />
       </div>
       <div className="container">
-        {/* <label>
-          <input placeholder="Ввод TODO" value={text} onChange={(e) => setText(e.target.value)}></input>
-          <button className="btn btn-outline-success" onClick={addTodo}>Add</button>
-        </label> */}
         <ImputField
           text={text}
           setText={setText}
