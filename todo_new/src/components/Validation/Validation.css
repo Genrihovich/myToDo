@@ -1,0 +1,58 @@
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-items: top;
+    min-height: 10vh;
+    width: 100%;
+    background: #0483f2;
+    padding-top: 6px;
+}
+
+.errors {
+    color: red;
+    direction: rtl;
+    display: list-item;
+    padding-right: 150px;
+    font-size: 14px;
+}
+
+input {
+    height: 30px;
+    width: 250px;
+    border: none;
+    border-bottom: 1px solid whitesmoke;
+    background: none;
+    color: white;
+    padding: 0 10px;
+    outline: none;
+    margin-right: 5px;
+
+}
+
+input::placeholder {
+    color: blanchedalmond;
+}
+
+.enter {
+    height: 30px;
+    width: 100px;
+    font-size: 12px;
+    background: none;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    margin-right: 5px;
+}
+
+.enter:hover {
+    background: whitesmoke;
+    color: #222222;
+    cursor: pointer;
+}
+
+.tiptop {
+    width: 100%;
+    color: aqua;
+    direction: rtl;
+    padding: 0 110px;
+}
