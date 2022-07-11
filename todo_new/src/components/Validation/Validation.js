@@ -10,11 +10,9 @@ function Validation() {
     const [userName, setUserName] = useState('')
     //  const [isValid, setValid] = useState(false)
 
-    useEffect(() => {
-        if (userName.length === 6) {
-            console.log('уже 6');
-        }
-    }, [userName])
+    const addUser(){
+
+    }
 
 
 
@@ -27,8 +25,14 @@ function Validation() {
                     placeholder="Введіть нікнейм"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
+                    maxlength='6'
                 />
-                <button type="submit" className="enter">Ввійти</button>
+                <button
+                    type="submit"
+                    className="enter"
+                    onClick={addUser}
+                >Ввійти</button>
+
                 <label className='tiptop'>Довжина має бути не більше 6 : 6/{userName.length}</label>
             </div>
             <div className="errors">

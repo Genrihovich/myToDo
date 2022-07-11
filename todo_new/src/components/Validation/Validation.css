@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     justify-content: right;
     align-items: top;
-    min-height: 10vh;
+    min-height: 6vh;
     width: 100%;
     background: #0483f2;
     padding-top: 6px;
@@ -54,5 +54,7 @@ input::placeholder {
     width: 100%;
     color: aqua;
     direction: rtl;
-    padding: 0 110px;
+    padding: 0 140px;
+    font-size: 12px;
+    margin-top: 0px;
 }
