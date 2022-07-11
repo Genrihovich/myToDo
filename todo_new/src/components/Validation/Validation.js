@@ -10,7 +10,7 @@ function Validation() {
     const [userName, setUserName] = useState('')
     //  const [isValid, setValid] = useState(false)
 
-    const addUser(){
+    const AddUser = () => {
 
     }
 
@@ -30,7 +30,7 @@ function Validation() {
                 <button
                     type="submit"
                     className="enter"
-                    onClick={addUser}
+                    onClick={AddUser}
                 >Ввійти</button>
 
                 <label className='tiptop'>Довжина має бути не більше 6 : 6/{userName.length}</label>
