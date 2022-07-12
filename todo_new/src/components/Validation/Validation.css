@@ -9,14 +9,6 @@
     padding-top: 6px;
 }
 
-.errors {
-    color: red;
-    direction: rtl;
-    display: list-item;
-    padding-right: 150px;
-    font-size: 14px;
-}
-
 input {
     height: 30px;
     width: 250px;
