@@ -8,10 +8,20 @@ import './Validation.css'
 
 function Validation() {
     const [userName, setUserName] = useState('')
+    const [users, setUsers] = useState(localStorage.getItem('Users') || [])
     //  const [isValid, setValid] = useState(false)
 
-    const AddUser = () => {
+    useEffect(() => {
+        const data = window.localStorage.getItem('Users')
+        if (data !== null) 
+    }, [])
 
+    const AddUser = () => {
+        console.log('gfg');
+
+        return {
+            //           isValid
+        }
     }
 
 
@@ -25,7 +35,7 @@ function Validation() {
                     placeholder="Введіть нікнейм"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
-                    maxlength='6'
+                    maxLength='6'
                 />
                 <button
                     type="submit"
