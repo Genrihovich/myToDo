@@ -4,6 +4,16 @@ import './Validation.css'
 function Validation() {
     const [userName, setUserName] = useState('')//імя юзера
     const [users, setUsers] = useState(localStorage.getItem('Users') || [])
+    const [isValid, setValid] = useState(false) //якщо валидний інпут
+
+    useEffect(() => {
+        console.log(userName);
+        console.log('до' + isValid);
+        if (userName !== '') {
+            setValid(true)
+            console.log('после' + isValid);
+        }
+    }, [userName])
 
     useEffect(() => {//перевіряємо чи є данні -> загружаємо
         const data = window.localStorage.getItem('Users')
@@ -21,15 +31,8 @@ function Validation() {
                 userName,
             ])
             setUserName('')//сброс ніка
-
-        } else {
-            console.log('Імя занято');
-            // ==================тут виход з компоненти з імям і isValid
         }
-
     }
-
-    // кнопка чтоб не актівна було до того як можна
 
     const keyPress = (e) => {
         const code = e.keyCode || e.which
@@ -39,6 +42,7 @@ function Validation() {
     }
     //=============== тут пробросіть isValid, userName
     return (
+        isValid,
         <div>
             <div className="wrapper">
                 <input
@@ -52,6 +56,7 @@ function Validation() {
                 <button
                     type="submit"
                     className="enter"
+                    disabled={!isValid}
                     onClick={AddUser}
                 >Ввійти</button>
                 <label className='tiptop'>Довжина має бути не більше 6 : 6/{userName.length}</label>
