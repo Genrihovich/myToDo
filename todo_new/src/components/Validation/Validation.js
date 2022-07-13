@@ -7,7 +7,6 @@ function Validation() {
     const [isValid, setValid] = useState(false) //якщо валидний інпут
 
     useEffect(() => {
-
         if (userName !== '') {
             setValid(true)
         }
@@ -18,19 +17,20 @@ function Validation() {
         if (data !== null) setUsers(JSON.parse(data))
     }, [])
 
-    // useEffect(() => {// як є зміни в списку користувачів - то запишемо localStorage
-    //     window.localStorage.setItem('Users', JSON.stringify(users))
-    // }, [users])
+    useEffect(() => {// як є зміни в списку користувачів - то запишемо localStorage
+        window.localStorage.setItem('Users', JSON.stringify(users))
+    }, [users])
 
     const addUser = () => {
         if (!users.includes(userName)) {
-            window.localStorage.setItem('Users', userName)
+            console.log(users.userName);
             setUsers([
                 ...users,
                 userName,
             ])
 
-            setUserName('')//сброс ніка  
+            setUserName('')//сброс ніка 
+            //       window.localStorage.setItem('Users', JSON.stringify(users))
         }
     }
 
@@ -40,9 +40,8 @@ function Validation() {
             addUser()
         }
     }
-    //=============== тут пробросіть isValid, userName
+
     return (
-        isValid,
         <div>
             <div className="wrapper">
                 <input
