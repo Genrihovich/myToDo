@@ -7,11 +7,9 @@ function Validation() {
     const [isValid, setValid] = useState(false) //якщо валидний інпут
 
     useEffect(() => {
-        console.log(userName);
-        console.log('до' + isValid);
+
         if (userName !== '') {
             setValid(true)
-            console.log('после' + isValid);
         }
     }, [userName])
 
@@ -20,24 +18,26 @@ function Validation() {
         if (data !== null) setUsers(JSON.parse(data))
     }, [])
 
-    useEffect(() => {// як є зміни в списку користувачів - то запишемо localStorage
-        window.localStorage.setItem('Users', JSON.stringify(users))
-    }, [users])
+    // useEffect(() => {// як є зміни в списку користувачів - то запишемо localStorage
+    //     window.localStorage.setItem('Users', JSON.stringify(users))
+    // }, [users])
 
-    const AddUser = () => {
+    const addUser = () => {
         if (!users.includes(userName)) {
+            window.localStorage.setItem('Users', userName)
             setUsers([
                 ...users,
                 userName,
             ])
-            setUserName('')//сброс ніка
+
+            setUserName('')//сброс ніка  
         }
     }
 
     const keyPress = (e) => {
         const code = e.keyCode || e.which
         if (code === 13) {
-            AddUser()
+            addUser()
         }
     }
     //=============== тут пробросіть isValid, userName
@@ -57,7 +57,7 @@ function Validation() {
                     type="submit"
                     className="enter"
                     disabled={!isValid}
-                    onClick={AddUser}
+                    onClick={addUser}
                 >Ввійти</button>
                 <label className='tiptop'>Довжина має бути не більше 6 : 6/{userName.length}</label>
             </div>
