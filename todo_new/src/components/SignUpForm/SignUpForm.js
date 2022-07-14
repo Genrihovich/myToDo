@@ -33,10 +33,12 @@ class SignUpForm extends Component {
                     className='tiptop'>
                     Довжина має бути не більше {this.state.maxLength} : {this.state.maxLength}/{this.state.userName.length}
                 </label>
+                <p>State of Component</p>
+                <pre>{JSON.stringify(this.state, null, 2)}</pre>
             </div>
         )
     }
 
 }
-
+//Implemented the Input component
 export default SignUpForm
