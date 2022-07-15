@@ -1,12 +1,12 @@
 import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import classNames from 'classnames';// помогает при формировани динаич классов и обьединении класов
+import PropTypes from 'prop-types';//позволяет проверять типы данных, поступающие в компонент в виде пропсов
 import './Input.css';
 
 function Input({
     id, className, label, error, ...attrs
 }) {
-    const classes = classNames(
+    const classes = classNames(//формируем классы, которые будут задаваться input-у
         'input',
         'className',
         { error },
@@ -35,7 +35,7 @@ function Input({
 };
 
 Input.protoTypes = {
-    id: PropTypes.string.isRequired,// клчевой на нем вся логика
+    id: PropTypes.string.isRequired,// ключевой на нем вся логика
     classNames: PropTypes.string, //для стилизации компонента
     label: PropTypes.string,//название инпута
     error: PropTypes.string,//поле ошибки
