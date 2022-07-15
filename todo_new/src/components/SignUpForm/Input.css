@@ -1,0 +1,10 @@
+.inputWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-items: top;
+    min-height: 6vh;
+    width: 100%;
+    background: #0483f2;
+    padding-top: 6px;
+}

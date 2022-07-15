@@ -1,4 +1,5 @@
 import SignUpForm from './components/SignUpForm/SignUpForm'
+import Input from './components/SignUpForm/Input'
 import './App.css';
 
 
@@ -9,7 +10,8 @@ function App() {
     <div className="App">
       <>
 
-        <SignUpForm />
+        {/* <SignUpForm /> */}
+        <Input id="text" type="text" />
       </>
     </div >
   );
