@@ -1,44 +1,51 @@
 import React, { Component } from 'react'
 import './SignUpForm.css'
+import Input from './Input';
 
 class SignUpForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             userName: '',
-            maxLength: 6,
-            placeholder: 'Введіть нікнейм'
         }
         this.onNameChangeHandler = this.onNameChangeHandler.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     onNameChangeHandler(e) {
-        this.setState({
-            userName: e.target.value
-        })
-
+        this.setState({ userName: e.target.value })
     }
+    handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            console.log('enter');
+        }
+    }
+
     render() {
+        const userName = this.state.userName;
+        const maxLength = 6;
+        const error = 'Довжина має бути не більше: ' + maxLength + ' [' + maxLength + '/' + userName.length + ']';
+
         return (
-            <div className="wrapper">
-                <input
-                    type="text"
-                    placeholder={this.state.placeholder}
-                    value={this.state.userName}
-                    onChange={this.onNameChangeHandler}
-                    //  onKeyPress={(e) => keyPress(e)}
-                    maxLength={this.state.maxLength}
-                />
-                <label
-                    className='tiptop'>
-                    Довжина має бути не більше {this.state.maxLength} : {this.state.maxLength}/{this.state.userName.length}
-                </label>
+            <>
+                <div className="wrapper">
+                    <Input id="text"
+                        type="text"
+                        label="Ввод ніка"
+                        placeholder="Введіть нікнейм"
+                        maxLength={maxLength}
+                        error={error}
+                        onChange={this.onNameChangeHandler}
+                        onKeyPress={this.handleKeyPress}
+                    />
+
+                </div>
                 <p>State of Component</p>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
-            </div>
+            </>
+
         )
     }
-
 }
 //Implemented the Input component
 export default SignUpForm

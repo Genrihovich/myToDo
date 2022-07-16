@@ -1,27 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';// помогает при формировани динаич классов и обьединении класов
 import PropTypes from 'prop-types';//позволяет проверять типы данных, поступающие в компонент в виде пропсов
 import './Input.css';
 
 function Input({
-    id, className, label, error, onChange, ...attrs
+    id, className, label, error, ...attrs
 }) {
     const classes = classNames(//формируем классы, которые будут задаваться input-у
         'input',
         'className',
         { error },
     );
-
-    const [userName, setUserName] = useState('')
-
-    const onNameChangeHandler = (e) => {
-        setUserName(e.target.value)
-    }
-    if (error) {
-        error += (attrs.maxLength + ' [' + attrs.maxLength + '/' + userName.length) + ']'
-    }
-
-
     return (
         <div className="inputWrapper">
             <div className="labelsWrapper">
@@ -35,7 +24,6 @@ function Input({
                 name={id}
                 id={id}
                 className={classes}
-                onChange={onNameChangeHandler}
                 {...attrs}
             />
             {error &&
@@ -49,15 +37,13 @@ Input.protoTypes = {
     id: PropTypes.string.isRequired,// ключевой на нем вся логика
     classNames: PropTypes.string, //для стилизации компонента
     label: PropTypes.string,//название инпута
-    error: PropTypes.string,//поле ошибки
-    onChange: PropTypes.func,
+    error: PropTypes.string,//поле ошибки 
 }
 
 Input.defaultProps = {
     className: '',
     label: '',
     error: '',
-    onChange: () => { },
 }
 
 export default Input;

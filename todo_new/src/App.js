@@ -1,21 +1,11 @@
-import Input from './components/SignUpForm/Input';
+import SignUpForm from './components/SignUpForm/SignUpForm';
 import './App.css';
 
 
 function App() {
-
-
   return (
     <div className="App">
-      <div className="wrapper">
-        <Input id="text"
-          type="text"
-          label="Ввод ніка"
-          placeholder="Введіть нікнейм"
-          maxLength="6"
-          error='Довжина має бути не більше: '
-        />
-      </div>
+      <SignUpForm />
     </div >
   );
 }

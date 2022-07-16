@@ -9,22 +9,6 @@
     padding-top: 6px;
 }
 
-input {
-    height: 30px;
-    width: 250px;
-    border: none;
-    border-bottom: 1px solid rgb(70, 23, 150);
-    background: none;
-    color: white;
-    padding: 0 10px;
-    outline: none;
-    margin-right: 5px;
-
-}
-
-input::placeholder {
-    color: blanchedalmond;
-}
 
 .enter {
     height: 30px;
@@ -40,13 +24,4 @@ input::placeholder {
     background: whitesmoke;
     color: #222222;
     cursor: pointer;
-}
-
-.tiptop {
-    width: 100%;
-    color: aqua;
-    direction: rtl;
-    padding: 0 140px;
-    font-size: 12px;
-    margin-top: 0px;
 }

@@ -10,8 +10,6 @@
     cursor: not-allowed;
 }
 
-
-
 .input.error {
     border-color: #D43728;
     background-color: rgba(212, 55, 40, 0.2);
@@ -45,15 +43,4 @@
     margin-top: 5px;
     color: #D43728;
     font-size: 12px;
-}
-
-.wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: right;
-    align-items: top;
-    min-height: 6vh;
-    width: 100%;
-    background: #cdd6d2;
-    padding-top: 6px;
 }
