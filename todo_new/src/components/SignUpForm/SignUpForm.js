@@ -8,7 +8,7 @@ class SignUpForm extends Component {
         super(props);
         this.state = {
             userName: '',
-            users: localStorage.getItem('Users') || [],
+            users: JSON.parse(localStorage.getItem('Users')) || [],
         }
         this.onNameChangeHandler = this.onNameChangeHandler.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
