@@ -13,8 +13,7 @@ function App() {
           label="Ввод ніка"
           placeholder="Введіть нікнейм"
           maxLength="6"
-          onChange={(e) => { console.log(e.target.value); }}
-          error='Довжина має бути не більше 6'
+          error='Довжина має бути не більше: '
         />
       </div>
     </div >
