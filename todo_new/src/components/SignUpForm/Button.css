@@ -1,0 +1,20 @@
+.enter {
+    height: 40px;
+    width: 100px;
+    font-size: 12px;
+    background: none;
+    border: 1px solid whitesmoke;
+    color: rgb(65, 18, 233);
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 16px;
+}
+
+.enter:hover {
+
+    cursor: pointer;
+}
+
+:disabled {
+    color: whitesmoke;
+}
