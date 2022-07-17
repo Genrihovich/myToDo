@@ -1,11 +1,11 @@
-import SignUpForm from './components/SignUpForm/SignUpForm';
+import Gritting from './components/Gritting';
 import './App.css';
 
 
 function App() {
   return (
     <div className="App">
-      <SignUpForm />
+      <Gritting />
     </div >
   );
 }
