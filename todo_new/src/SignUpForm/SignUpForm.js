@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './SignUpForm.css'
-import Input from './Input';
-import Button from './Button';
+import Input from '../components/Input';
+import Button from '../components/Button'
 
 
 class SignUpForm extends Component {
@@ -10,25 +10,29 @@ class SignUpForm extends Component {
         this.state = {
             userName: '',
             users: JSON.parse(localStorage.getItem('Users')) || [],
+            errors: '',
             isLoggedIn: this.props.isLoggedIn,
         }
         this.onNameChangeHandler = this.onNameChangeHandler.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.addUserOnClickHandler = this.addUserOnClickHandler.bind(this);
-
     }
 
     onNameChangeHandler(e) {
         this.setState({ userName: e.target.value })
     }
     addUserOnClickHandler() {
+
         if (!this.state.users.includes(this.state.userName)) {
             this.state.users.push(this.state.userName)
             localStorage.setItem('Users', JSON.stringify(this.state.users))
 
             this.setState({ isLoggedIn: true })
-
+            this.setState({ errors: '' })
+        } else {
+            this.setState({ errors: 'Такий нік вже існує' })
         }
+
 
     }
     handleKeyPress(e) {
@@ -41,7 +45,7 @@ class SignUpForm extends Component {
     render() {
         const userName = this.state.userName;
         const maxLength = 6;
-        const label = 'Нік має бути не більше ' + maxLength + 'символів';
+        const label = 'Нік має бути не більше ' + maxLength + ' символів';
 
         let isBtnDisabled = '';
         (userName.length !== 0) ? isBtnDisabled = '' : isBtnDisabled = 'disabled';
@@ -58,6 +62,7 @@ class SignUpForm extends Component {
                         value={userName}
                         onChange={this.onNameChangeHandler}
                         onKeyPress={this.handleKeyPress}
+                        errors={this.state.errors}
                     />
                     <Button
                         children="Увійти"
@@ -70,7 +75,6 @@ class SignUpForm extends Component {
                 {/* <p>State of Component</p>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
             </>
-
         )
     }
 }
