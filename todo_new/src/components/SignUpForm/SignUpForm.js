@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './SignUpForm.css'
 import Input from './Input';
 import Button from './Button';
-import Gritting from '../Gritting';
 
 
 class SignUpForm extends Component {
@@ -42,28 +41,21 @@ class SignUpForm extends Component {
     render() {
         const userName = this.state.userName;
         const maxLength = 6;
-        const error = 'Довжина має бути не більше: ' + maxLength + ' [' + maxLength + '/' + userName.length + ']';
-        let isBtnDisabled = '';
-        (userName.length !== 0) ? isBtnDisabled = '' : isBtnDisabled = 'disabled'
+        const label = 'Нік має бути не більше ' + maxLength + 'символів';
 
-        const isLoggedIn = this.state.isLoggedIn;
-        console.log('SignUpForm_props - ' + this.props.isLoggedIn);
-        console.log('SignUpForm - ' + this.state.isLoggedIn);
-        // console.log(is);
-        if (isLoggedIn) {
-            <Gritting isLoggedIn={isLoggedIn} />
-            console.log('тута ' + isLoggedIn);
-        }
+        let isBtnDisabled = '';
+        (userName.length !== 0) ? isBtnDisabled = '' : isBtnDisabled = 'disabled';
+
 
         return (
             <>
                 <div className="wrapper">
                     <Input id="text"
                         type="text"
-                        label="Ввод ніка"
+                        label={label}
                         placeholder="Введіть нікнейм"
                         maxLength={maxLength}
-                        error={error}
+                        value={userName}
                         onChange={this.onNameChangeHandler}
                         onKeyPress={this.handleKeyPress}
                     />

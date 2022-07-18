@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';//дозволяє перевіряти ти�
 import './Input.css';
 
 function Input({
-    id, className, label, error, ...attrs
+    id, className, label, maxLength, ...attrs
 }) {
     const classes = classNames(//формуємо класси, які будуть задаваться input-у
         'input',
         'className',
-        { error },
     );
+
     return (
         <div className="inputWrapper">
             <div className="labelsWrapper">
@@ -24,10 +24,12 @@ function Input({
                 name={id}
                 id={id}
                 className={classes}
+                maxLength={maxLength}
                 {...attrs}
             />
-            {error &&
-                <span className="inputError">{error}</span>
+            {maxLength ?
+                <span className="inputError">[{maxLength}/{attrs.value.length}]</span> :
+                <span className="inputError"> </span>
             }
         </div>
     );
@@ -37,13 +39,12 @@ Input.protoTypes = {
     id: PropTypes.string.isRequired,// ключовий на ньому уся логіка
     classNames: PropTypes.string, //для стилізації компонента
     label: PropTypes.string,//назва інпута
-    error: PropTypes.string,//поле помилки 
+    //  maxLength: PropTypes.string, //кількість символів
 }
 
 Input.defaultProps = {
     className: '',
     label: '',
-    error: '',
 }
 
 export default Input;
