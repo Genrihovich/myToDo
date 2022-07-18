@@ -34,16 +34,6 @@ function Input({
             {(errors || maxLength) &&
                 <span className="inputError">{errors} {labelCount}</span>
             }
-            {/* {maxLength ?
-                <span className="inputError">[{maxLength}/{attrs.value.length}]</span> :
-                <span className="inputError"> </span>
-            } */
-
-
-
-
-
-            }
         </div>
     );
 };

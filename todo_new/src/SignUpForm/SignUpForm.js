@@ -11,10 +11,11 @@ class SignUpForm extends Component {
             userName: '',
             users: JSON.parse(localStorage.getItem('Users')) || [],
             errors: '',
-            isLoggedIn: this.props.isLoggedIn,
+
         }
         this.onNameChangeHandler = this.onNameChangeHandler.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
+
         this.addUserOnClickHandler = this.addUserOnClickHandler.bind(this);
     }
 
@@ -26,8 +27,12 @@ class SignUpForm extends Component {
         if (!this.state.users.includes(this.state.userName)) {
             this.state.users.push(this.state.userName)
             localStorage.setItem('Users', JSON.stringify(this.state.users))
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            this.setState({ isLoggedIn: true })
+            this.props.addUserOnClickHandler(true, this.state.userName)
+
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
             this.setState({ errors: '' })
         } else {
             this.setState({ errors: 'Такий нік вже існує' })
@@ -44,6 +49,8 @@ class SignUpForm extends Component {
 
     render() {
         const userName = this.state.userName;
+
+
         const maxLength = 6;
         const label = 'Нік має бути не більше ' + maxLength + ' символів';
 
