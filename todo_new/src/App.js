@@ -8,14 +8,15 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      userName: '',
-      isLoggedIn: false,
+      userName: JSON.parse(localStorage.getItem('activeUser')) || '',
+      isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')) || false,
     }
     this.LoggedInOnClickHandler = this.LoggedInOnClickHandler.bind(this)
   }
 
   LoggedInOnClickHandler(valueIsLogged, user) {
     this.setState({ isLoggedIn: valueIsLogged })
+
     this.setState({ userName: user })
   }
 

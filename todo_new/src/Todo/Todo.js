@@ -14,6 +14,7 @@ class Todo extends React.Component {
 
     SignOutOnClickHandler() {
         this.props.SignOutOnClickHandler(false, '')
+        localStorage.setItem('isLoggedIn', JSON.stringify(false))
     }
 
     render() {

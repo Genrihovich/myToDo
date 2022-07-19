@@ -8,3 +8,7 @@
     background: #cdd6d2;
     padding-top: 6px;
 }
+
+.active {
+    margin-top: 12px;
+}

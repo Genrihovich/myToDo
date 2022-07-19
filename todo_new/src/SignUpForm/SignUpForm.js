@@ -27,6 +27,8 @@ class SignUpForm extends Component {
         if (!this.state.users.includes(this.state.userName)) {
             this.state.users.push(this.state.userName)
             localStorage.setItem('Users', JSON.stringify(this.state.users))
+            localStorage.setItem('isLoggedIn', JSON.stringify(true))
+            localStorage.setItem('activeUser', JSON.stringify(this.state.userName))
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             this.props.addUserOnClickHandler(true, this.state.userName)
