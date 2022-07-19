@@ -11,10 +11,10 @@ class App extends React.Component {
       userName: '',
       isLoggedIn: false,
     }
-    this.addUserisLoggedInOnClickHandler = this.addUserisLoggedInOnClickHandler.bind(this)
+    this.LoggedInOnClickHandler = this.LoggedInOnClickHandler.bind(this)
   }
 
-  addUserisLoggedInOnClickHandler(valueIsLogged, user) {
+  LoggedInOnClickHandler(valueIsLogged, user) {
     this.setState({ isLoggedIn: valueIsLogged })
     this.setState({ userName: user })
   }
@@ -27,11 +27,12 @@ class App extends React.Component {
       componentShow =
         <Todo
           userName={this.state.userName}
+          SignOutOnClickHandler={this.LoggedInOnClickHandler}
         />
     } else {
       componentShow =
         <SignUpForm
-          addUserOnClickHandler={this.addUserisLoggedInOnClickHandler}
+          addUserOnClickHandler={this.LoggedInOnClickHandler}
         />
     }
 

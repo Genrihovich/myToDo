@@ -1,21 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Input from '../components/Input'
 import './Todo.css';
 import Button from '../components/Button';
 
-class Todo extends Component {
+class Todo extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+
+        }
+        this.SignOutOnClickHandler = this.SignOutOnClickHandler.bind(this);
+    }
+
+    SignOutOnClickHandler() {
+        this.props.SignOutOnClickHandler(false, '')
+    }
 
     render() {
         const userName = this.props.userName;
         return (
             <div>
-                <div>
+                <div className="wrapper">
                     <p>Привіт, {userName}!</p>
                     <Button
                         children="Вийти"
                         className="enter"
                         onClick={this.SignOutOnClickHandler}
                     />
+
                 </div>
 
                 <Input id="text"
