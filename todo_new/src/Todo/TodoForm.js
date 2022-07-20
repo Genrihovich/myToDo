@@ -2,29 +2,87 @@ import React from 'react'
 import './TodoForm.css';
 import LogOutUser from './LogOutUser';
 import InputField from './InputField';
+import TodoList from './TodoList';
 
 class TodoForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = ({
+            todos: JSON.parse(localStorage.getItem(this.props.userName)) || [],
+            textTodo: ''
+        })
+        this.toggleTodoComplete = this.toggleTodoComplete.bind(this);
+        this.removeTodo = this.removeTodo.bind(this);
+        this.AddNewTodoOnClickHandler = this.AddNewTodoOnClickHandler.bind(this);
+        this.NewTodoChangeHandler = this.NewTodoChangeHandler.bind(this);
+    }
+    NewTodoChangeHandler(e) {
+        this.setState({ textTodo: e.target.value })
+    }
 
+    AddNewTodoOnClickHandler() {
+        const userName = this.props.userName;
+        const textTodo = this.state.textTodo;
+        const todos = this.state.todos;
+
+        if (textTodo.trim().length) {
+            this.state.todos.push({
+                id: new Date().toISOString(), // идентификатор
+                textTodo,                         // сам текст
+                completed: false, // статус завершенности (вначале дело еще не завершено)                  
+            })
+        }
+        localStorage.setItem(userName, JSON.stringify(todos));
+        this.setState({ textTodo: '' })
+    }
+    handleKeyPress(e) {
+        const code = e.keyCode || e.which
+        if (code === 13) { this.AddNewTodoOnClickHandler() }
+    }
+
+    toggleTodoComplete(todoId) {
+        this.setState({
+            todos: this.state.todos.map(todo => {
+                if (todo.id !== todoId) return todo;
+                return {
+                    ...todo,
+                    completed: !todo.completed,
+                }
+            })
+        })
+    }
+
+
+
+
+    removeTodo(todoId) {
+        this.setState({ todos: this.state.todos.filter(todo => todo.id !== todoId) })
+        localStorage.setItem(this.props.userName, JSON.stringify(this.state.todos));
+    }
 
     render() {
-        const userName = this.props.userName;
+
+
         return (
             <div>
                 <LogOutUser
-                    userName={userName}
+                    userName={this.props.userName}
                     SignOutOnClickHandler={this.props.SignOutOnClickHandler}
                 />
                 <InputField
-                    userName={userName}
+                    userName={this.props.userName}
+                    text={this.state.textTodo}
+                    setText={this.NewTodoChangeHandler}
+                    addTodo={this.AddNewTodoOnClickHandler}
                 />
-                {/* <Input id="text"
-                    type="text"
-                    placeholder="Ввод TODO"
-                    onChange={this.onNameChangeHandler}
-                    onKeyPress={this.handleKeyPress}
-                /> */}
-                {/* <p>State of Component</p>
-                <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
+                <TodoList
+                    todos={this.state.todos}
+                    toggleTodoComplete={this.toggleTodoComplete}
+                    removeTodo={this.removeTodo}
+                />
+
+                <p>State of Component</p>
+                <pre>{JSON.stringify(this.state, null, 2)}</pre>
             </div>
         )
     }

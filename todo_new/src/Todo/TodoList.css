@@ -1,0 +1,33 @@
+ul {
+    list-style: none;
+}
+
+li {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    gap: 0.5rem;
+}
+
+.delete {
+    color: red;
+    cursor: pointer;
+    font-size: xx-large;
+    margin-top: -11px;
+}
+
+input:checked+span {
+    text-decoration: line-through;
+}
+
+.todo {
+    align-items: left;
+    display: flex;
+    font-size: 18px;
+    /* justify-content: space-between; */
+}
+
+span {
+    color: brown;
+    padding-top: 13px;
+}
