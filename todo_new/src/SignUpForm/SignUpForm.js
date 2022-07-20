@@ -75,7 +75,7 @@ class SignUpForm extends Component {
                     />
                     <Button
                         children="Увійти"
-                        className="enter"
+                        className="enter_in"
                         onClick={this.addUserOnClickHandler}
                         disabled={isBtnDisabled}
                     />

@@ -8,7 +8,7 @@ function Input({
 }) {
     const classes = classNames(//формуємо класси, які будуть задаваться input-у
         'input',
-        'className',
+        className,
         { errors }
     );
     const labelCount = maxLength ?

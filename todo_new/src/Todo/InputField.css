@@ -1,0 +1,14 @@
+.InputField {
+    display: flex;
+
+}
+
+.btn-InputField {
+    height: 25px;
+    margin-left: 6px;
+    margin-top: 21px;
+}
+
+.todo-InputField {
+    width: 30rem;
+}

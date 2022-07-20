@@ -1,0 +1,18 @@
+.wrapper_out {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-items: top;
+    width: 100%;
+    background: #abb6db;
+}
+
+p {
+    align-items: center;
+    align-content: center;
+    color: blue;
+}
+
+.enter {
+    margin-top: 10px;
+}

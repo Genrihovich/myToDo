@@ -3,10 +3,10 @@
     flex-wrap: wrap;
     justify-content: right;
     align-items: top;
-    min-height: 6vh;
-    width: 100%;
+    /* min-height: 6vh; */
+    /* width: 100%; */
     background: #cdd6d2;
-    padding-top: 6px;
+    /* padding-top: 6px; */
 }
 
 .active {

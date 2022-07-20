@@ -1,5 +1,5 @@
 import SignUpForm from './SignUpForm/SignUpForm';
-import Todo from './Todo/Todo';
+import TodoForm from './Todo/TodoForm';
 import './App.css';
 import React from 'react'
 
@@ -26,7 +26,7 @@ class App extends React.Component {
     let componentShow;
     if (isLoggedIn) {
       componentShow =
-        <Todo
+        <TodoForm
           userName={this.state.userName}
           SignOutOnClickHandler={this.LoggedInOnClickHandler}
         />
