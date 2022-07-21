@@ -13,14 +13,14 @@ class TodoForm extends React.Component {
         })
         this.toggleTodoComplete = this.toggleTodoComplete.bind(this);
         this.removeTodo = this.removeTodo.bind(this);
-        this.AddNewTodoOnClickHandler = this.AddNewTodoOnClickHandler.bind(this);
-        this.NewTodoChangeHandler = this.NewTodoChangeHandler.bind(this);
+        this.addNewTodoOnClickHandler = this.addNewTodoOnClickHandler.bind(this);
+        this.newTodoChangeHandler = this.newTodoChangeHandler.bind(this);
     }
-    NewTodoChangeHandler(e) {
+    newTodoChangeHandler(e) {
         this.setState({ textTodo: e.target.value })
     }
 
-    AddNewTodoOnClickHandler() {
+    addNewTodoOnClickHandler() {
         const userName = this.props.userName;
         const textTodo = this.state.textTodo;
         const todos = this.state.todos;
@@ -37,7 +37,7 @@ class TodoForm extends React.Component {
     }
     handleKeyPress(e) {
         const code = e.keyCode || e.which
-        if (code === 13) { this.AddNewTodoOnClickHandler() }
+        if (code === 13) { this.addNewTodoOnClickHandler() }
     }
 
     toggleTodoComplete(todoId) {
@@ -72,8 +72,8 @@ class TodoForm extends React.Component {
                 <InputField
                     userName={this.props.userName}
                     text={this.state.textTodo}
-                    setText={this.NewTodoChangeHandler}
-                    addTodo={this.AddNewTodoOnClickHandler}
+                    setText={this.newTodoChangeHandler}
+                    addTodo={this.addNewTodoOnClickHandler}
                 />
                 <TodoList
                     todos={this.state.todos}
