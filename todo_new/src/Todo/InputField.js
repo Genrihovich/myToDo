@@ -15,7 +15,7 @@ const InputField = ({ textTodo, setText, addTodo }) => {
                 placeholder='Ввод нового Todo'
                 value={textTodo}
                 onChange={setText}
-            // onKeyPress={this.handleKeyPress}
+            //   onKeyPress={this.handleKeyPress}
             />
             <Button
                 className='btn-InputField'

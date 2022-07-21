@@ -24,21 +24,22 @@ class SignUpForm extends Component {
     }
     addUserOnClickHandler() {
 
-        if (!this.state.users.includes(this.state.userName)) {
-            this.state.users.push(this.state.userName)
-            localStorage.setItem('Users', JSON.stringify(this.state.users))
-            localStorage.setItem('isLoggedIn', JSON.stringify(true))
-            localStorage.setItem('activeUser', JSON.stringify(this.state.userName))
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //   if (!this.state.users.includes(this.state.userName)) {
+        this.state.users.push(this.state.userName)
+        localStorage.setItem('Users', JSON.stringify(this.state.users))
+        localStorage.setItem('isLoggedIn', JSON.stringify(true))
+        localStorage.setItem('activeUser', JSON.stringify(this.state.userName))
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            this.props.addUserOnClickHandler(true, this.state.userName)
+        this.props.addUserOnClickHandler(true, this.state.userName)
 
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            this.setState({ errors: '' })
-        } else {
-            this.setState({ errors: 'Такий нік вже існує' })
-        }
+        this.setState({ errors: '' })
+        //  }
+        //  else {
+        //     this.setState({ errors: 'Такий нік вже існує' })
+        // }
 
 
     }

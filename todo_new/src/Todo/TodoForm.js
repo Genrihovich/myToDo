@@ -33,7 +33,10 @@ class TodoForm extends React.Component {
             })
         }
         localStorage.setItem(userName, JSON.stringify(todos));
+
         this.setState({ textTodo: '' })
+
+
     }
     handleKeyPress(e) {
         const code = e.keyCode || e.which
@@ -52,17 +55,13 @@ class TodoForm extends React.Component {
         })
     }
 
-
-
-
     removeTodo(todoId) {
-        this.setState({ todos: this.state.todos.filter(todo => todo.id !== todoId) })
-        localStorage.setItem(this.props.userName, JSON.stringify(this.state.todos));
+        const newTodos = this.state.todos.filter(todo => todo.id !== todoId)
+        this.setState({ todos: newTodos })
+        localStorage.setItem(this.props.userName, JSON.stringify(newTodos));
     }
 
     render() {
-
-
         return (
             <div>
                 <LogOutUser
@@ -71,7 +70,7 @@ class TodoForm extends React.Component {
                 />
                 <InputField
                     userName={this.props.userName}
-                    text={this.state.textTodo}
+                    textTodo={this.state.textTodo}
                     setText={this.newTodoChangeHandler}
                     addTodo={this.addNewTodoOnClickHandler}
                 />
@@ -81,8 +80,8 @@ class TodoForm extends React.Component {
                     removeTodo={this.removeTodo}
                 />
 
-                <p>State of Component</p>
-                <pre>{JSON.stringify(this.state, null, 2)}</pre>
+                {/* <p>State of Component</p>
+                <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
             </div>
         )
     }
