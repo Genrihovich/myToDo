@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import './SignUpForm.css'
+import React, { Component } from 'react';
+import './SignUpForm.css';
 import Input from '../components/Input';
-import Button from '../components/Button'
-
+import Button from '../components/Button';
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -23,25 +22,23 @@ class SignUpForm extends Component {
         this.setState({ userName: e.target.value })
     }
     addUserOnClickHandler() {
-
         //   if (!this.state.users.includes(this.state.userName)) {
         this.state.users.push(this.state.userName)
-        localStorage.setItem('Users', JSON.stringify(this.state.users))
+
+        if (!this.state.users.includes(this.state.userName)) {
+            localStorage.setItem('Users', JSON.stringify(this.state.users))
+        }
+
         localStorage.setItem('isLoggedIn', JSON.stringify(true))
         localStorage.setItem('activeUser', JSON.stringify(this.state.userName))
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         this.props.addUserOnClickHandler(true, this.state.userName)
-
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         this.setState({ errors: '' })
         //  }
         //  else {
         //     this.setState({ errors: 'Такий нік вже існує' })
         // }
-
-
     }
     handleKeyPress(e) {
         if (e.key === 'Enter') {
@@ -49,17 +46,14 @@ class SignUpForm extends Component {
         }
     }
 
-
     render() {
         const userName = this.state.userName;
-
 
         const maxLength = 6;
         const label = 'Нік має бути не більше ' + maxLength + ' символів';
 
         let isBtnDisabled = '';
         (userName.length !== 0) ? isBtnDisabled = '' : isBtnDisabled = 'disabled';
-
 
         return (
             <>
